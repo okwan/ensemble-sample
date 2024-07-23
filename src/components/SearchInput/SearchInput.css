@@ -4,6 +4,7 @@ search {
     justify-content: center;
     flex-direction: column;
     height: 20vh;
+    position: fixed;
 }
 
 search label {
@@ -17,9 +18,28 @@ search label {
 search input {
     height: 40px;
     font-size: 24px;
-    padding: 8px;
+    padding: 12px;
     width: 400px;
     border-radius: 8px;
     border: 0;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    position: relative;
+}
+
+.clear-btn {
+    background-color: white;
+    right: 16px;
+    bottom: 62px;
+    position: absolute;
+    border: 0;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+.clear-btn img {
+    width: 24px;
+    height: 24px;
 }

@@ -1,0 +1,22 @@
+.movie-list {
+    list-style-type: none;
+    display: flex;
+    max-width: 850px;
+}
+
+.movie-list__item {
+    padding: 24px;
+}
+
+.movie-list__item-title {
+    letter-spacing: 0.25px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.movie-list__item-poster {
+    object-fit: cover;
+    height: 450px;
+    width: auto;
+    border-radius: 8px;
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchBar from './components/SearchInput';
 import SearchResults from './components/SearchResults';
+import Pagination from './components/Pagination';
 import './App.css';
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <div className="App">
       <SearchBar />
       <main><SearchResults /></main>
+      <Pagination />
     </div>
   );
 }

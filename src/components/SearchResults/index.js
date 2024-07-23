@@ -13,9 +13,15 @@ function SearchResults() {
 
         return (
           <li key={index} className="movie-list__item">
-            <img src={poster} alt="" />
-            {title}
-            {year}
+            <img
+              src={poster}
+              alt={title + ' poster'}
+              className="movie-list__item-poster"
+            />
+            <p className="movie-list__item-title">{title}</p>
+            {year.endsWith('–') ? year.slice(0, year.length - 1) + ' – Current' : year}
+            <br/> <br />
+            <button onClick={() => {}}>Button</button>
           </li>
         );
       })}
@@ -24,7 +30,7 @@ function SearchResults() {
     searchQuery && (
       <p>
         Please refine your search. Your search of <strong>{searchQuery}</strong>{' '}
-        is displaying too many results.
+        is displaying too many results or none was found.
       </p>
     )
   );

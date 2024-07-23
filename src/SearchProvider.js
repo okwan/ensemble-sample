@@ -7,33 +7,54 @@ export const SearchContext = createContext();
 
 export const SearchProvider = ({ children }) => {
   const [searchQuery, setSearchQuery] = useState('');
+  const [pageNum, setPageNum] = useState(1);
   const [hasError, setHasError] = useState(false);
   const [results, setResults] = useState([]);
 
-  const debouncedSearch = useCallback(
-    debounce(async (searchValue) => {
+  const fetchResults = async (query, page) => {
+    try {
       const response = await fetch(
-        `http://www.omdbapi.com/?apikey=${API_KEY}&s=${searchValue}`,
+        `http://www.omdbapi.com/?apikey=${API_KEY}&s=${query}&page=${page}`,
       );
       const omdbSearchResults = await response.json();
-
       if (omdbSearchResults.Response === 'False') {
         setHasError(true);
+        setResults([]);
+      } else {
+        setHasError(false);
+        setResults(omdbSearchResults);
       }
-      setResults(omdbSearchResults);
-    }, 400),
+    } catch (error) {
+      setHasError(true);
+      setResults([]);
+    }
+  };
+
+  const debouncedFetchResults = useCallback(
+    debounce((query, page) => fetchResults(query, page), 400),
     [],
   );
 
-  const handleSearch = async (searchValue) => {
-    setHasError(false);
+  const handleSearch = (searchValue) => {
     setSearchQuery(searchValue);
-    debouncedSearch(searchValue);
+    debouncedFetchResults(searchValue, 1);
+  };
+
+  const handlePage = (page) => {
+    setPageNum(page);
+    fetchResults(searchQuery, page);
   };
 
   return (
     <SearchContext.Provider
-      value={{ searchQuery, results, handleSearch, hasError }}
+      value={{
+        pageNum,
+        searchQuery,
+        results,
+        handleSearch,
+        handlePage,
+        hasError,
+      }}
     >
       {children}
     </SearchContext.Provider>

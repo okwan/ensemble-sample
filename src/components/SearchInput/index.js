@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { SearchContext } from '../../SearchProvider';
-
+import closeIcon from './x-close.png';
 import './SearchInput.css';
 
 const SearchInput = () => {
@@ -20,6 +20,7 @@ const SearchInput = () => {
         onChange={handleInputChange}
         placeholder="Search by movie title..."
       />
+      <button className="clear-btn" onClick={() => handleSearch('')}><img src={closeIcon} alt="Clear search"/></button>
     </search>
   );
 };
