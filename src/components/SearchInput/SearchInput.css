@@ -1,0 +1,25 @@
+search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 20vh;
+}
+
+search label {
+    margin-bottom: 16px;
+    color: #2F3C7E;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+search input {
+    height: 40px;
+    font-size: 24px;
+    padding: 8px;
+    width: 400px;
+    border-radius: 8px;
+    border: 0;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
